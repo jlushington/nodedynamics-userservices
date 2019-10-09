@@ -40,7 +40,7 @@ public class OrgExist extends Validator{
 		
 		log.info("OrgExist->OrgExistExecute");
 		
-		log.info("OrgExist->OrgExistExecute->super.getRepo().hashCode(): " + super.getRepo().hashCode());
+		log.info("OrgExist->OrgExistExecute->repos: " + repos.hashCode());
 		//UserRepository repo= (UserRepository)repos.get(EValidation.Repos.USER);
 		//log.info("OrgExist->OrgExistExecute->existsById"+ repo.existsById("5d994870110e8d7caff4428d"));
 		//CompanyRepository repo = (CompanyRepository)super.getRepo().get(EValidation.Repos.COMPANY);
@@ -67,7 +67,7 @@ public class OrgExist extends Validator{
 	
 	@Override
 	public void setRepo(HashMap<Repos, MongoRepository> r) {
-		log.info("OrgExist->setRepo");
+		log.info("OrgExist->setRepo-> r.hashCode(): "+ r.hashCode());
 		super.setRepo(r);
 	}	
 

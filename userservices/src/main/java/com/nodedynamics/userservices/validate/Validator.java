@@ -11,12 +11,12 @@ import com.nodedynamics.userservices.models.CoreModel;
 
 public abstract class Validator implements Validate{
 	
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+
 	
 	private Validate val;
 	private static CoreModel model=null;
 	private Boolean isValid=null;
-	private HashMap<Repos, MongoRepository> repos;
+	private static HashMap<Repos, MongoRepository> repos=null;
 	
 	public Validator(Validate v) {
 		val=v;
@@ -66,9 +66,7 @@ public abstract class Validator implements Validate{
 		return repos;
 	}
 	@Override
-	public void setRepo(HashMap<Repos, MongoRepository> r) {
-		log.info("Validator->setRepo");
-		log.info("Validator->setRepo"+ r.hashCode());
+	public void setRepo(HashMap<Repos, MongoRepository> r) {		
 		if(repos==null) {
 			repos=r;
 		}

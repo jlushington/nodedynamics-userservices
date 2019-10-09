@@ -45,7 +45,7 @@ public class UserExist extends Validator{
 		model= (UserModel)super.getModel();
 		repos= super.getRepo();
 		
-		//log.info("UserExist->UserExistExecute->repos.hashCode(): " + repos.hashCode());
+		log.info("UserExist->UserExistExecute->repos.hashCode(): " + repos.hashCode());
 		//log.info("UserExist->UserExistExecute->super.getRepo().hashCode() : " + super.getRepo().size());
 		//UserRepository repo= (UserRepository)repos.get(EValidation.Repos.USER);
 		//log.info("UserExist->UserExistExecute->existsById"+ repo.existsById("5d994870110e8d7caff4428d"));
