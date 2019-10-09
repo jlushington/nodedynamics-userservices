@@ -41,23 +41,21 @@ public class UserServiceImpl implements IUserService{
 	public Mono<ResponseModel> CreateUser(UserModel user) {
 		//RETURN MESAGE;
 		ResponseModel model=null;
+		
+		//ADD Repos required for Validation
 		repos.put(EValidation.Repos.USER, userRepo);
 		repos.put(EValidation.Repos.COMPANY, CompanyRepo);
 		
-		log.info("UserServiceImpl->CreateUser->repos.get(EValidation.Repos.USER).hashCode() : " + repos.get(EValidation.Repos.USER).hashCode());
-		log.info("UserServiceImpl->CreateUser->repos.get(EValidation.Repos.COMPANY).hashCode() : " + repos.get(EValidation.Repos.COMPANY).hashCode());
 
-		
+		//Run Validation
 		Validate val2 = new ValidationBuilder().UserValidate().OrgValidate().build();
 		val2.setModel(user);
 		val2.setRepo(repos);
 		val2.validateExecute();
 		
 		
-		//BUSINESS LOGIC - CHECK IF COMPANY ID AND USERNAME ALREADY EXIST
-		Optional<List<UserModel>> CheckExt=userRepo.findByCompanyIDAndUsername(user.getCompanyID(), user.getUsername());
-		if(!(CheckExt.get().isEmpty())) {
-			model =ResponseModel.builder().MessageTypeID(0).MessageType("ERROR").Message("Company Already Exist").build();
+		if(!(val2.getIsValid())) {
+			model =ResponseModel.builder().MessageTypeID(0).MessageType("ERROR").Message("Did Not Pass Validation").build();
 			
 		}else {		
 			UserModel um = UserModel.builder()

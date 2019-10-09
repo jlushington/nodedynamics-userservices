@@ -42,31 +42,21 @@ public class UserExist extends Validator{
 	}
 	
 	private void UserExistExecute() {
-		model= (UserModel)super.getModel();
-		repos= super.getRepo();
 		
-		log.info("UserExist->UserExistExecute->repos.hashCode(): " + repos.hashCode());
-		//log.info("UserExist->UserExistExecute->super.getRepo().hashCode() : " + super.getRepo().size());
-		//UserRepository repo= (UserRepository)repos.get(EValidation.Repos.USER);
-		//log.info("UserExist->UserExistExecute->existsById"+ repo.existsById("5d994870110e8d7caff4428d"));
+		if(super.getIsValid()) {
 		
-		//UserRepository repo = (UserRepository)super.getRepo().get(EValidation.Repos.USER);
-		
-		log.info("UserExist->UserExistExecute->getUsername: "+ model.getUsername());
-		
-		//BUSINESS LOGIC - CHECK IF COMPANY ID AND USERNAME ALREADY EXIST
-		//UserRepository repo = new UserRepository();
-		
-		/*
-		UserRepository repo= (UserRepository)repos.get(EValidation.Repos.USER);
-		Optional<List<UserModel>> CheckExt=repo.findByCompanyIDAndUsername(model.getCompanyID(), model.getUsername());
-		
-		if(!(CheckExt.get().isEmpty())) {
-			super.setIsValid(false);
-		}else {
-			super.setIsValid(true);
+			model= (UserModel)super.getModel();
+			
+			repos= super.getRepo();
+			UserRepository repo= (UserRepository)repos.get(EValidation.Repos.USER);
+			
+			Optional<List<UserModel>> CheckExt=repo.findByCompanyIDAndUsername(model.getCompanyID(), model.getUsername());
+			if(!(CheckExt.get().isEmpty())) {
+				super.setIsValid(false);
+			}else {
+				super.setIsValid(true);
+			}
 		}
-		*/
 		
 	}
 
@@ -78,7 +68,6 @@ public class UserExist extends Validator{
 
 	@Override
 	public void setRepo(HashMap<Repos, MongoRepository> r) {
-		log.info("UserExist->setRepo");
 		super.setRepo(r);
 	}	
 
