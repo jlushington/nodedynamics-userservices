@@ -50,6 +50,16 @@ public class ValidateImpl implements Validate{
 	public void setRepo(HashMap<Repos, MongoRepository> repo) {
 		repos.putAll(repo);
 		log.info("ValidateImpl->setRepo");
-	}	
+	}
+	
+	@Override
+	public void close()
+	{
+		model=null;
+		isValid=true;
+		repos=null;
+		
+		
+	}
 
 }

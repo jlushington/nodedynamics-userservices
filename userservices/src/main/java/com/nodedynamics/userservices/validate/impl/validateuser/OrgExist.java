@@ -57,6 +57,11 @@ public class OrgExist extends Validator{
 	@Override
 	public void setRepo(HashMap<Repos, MongoRepository> r) {
 		super.setRepo(r);
+	}
+	
+	@Override
+	public void close() {
+		super.close();
 	}	
 
 }

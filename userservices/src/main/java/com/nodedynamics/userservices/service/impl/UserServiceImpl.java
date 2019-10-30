@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
+import com.nodedynamics.userservices.api.AccessController;
 import com.nodedynamics.userservices.common.EValidation;
 import com.nodedynamics.userservices.common.EValidation.Repos;
 import com.nodedynamics.userservices.models.common.ResponseModel;
@@ -19,12 +20,15 @@ import com.nodedynamics.userservices.repo.UserRepository;
 import com.nodedynamics.userservices.service.IUserService;
 import com.nodedynamics.userservices.validate.Validate;
 import com.nodedynamics.userservices.validate.ValidationBuilder;
+
+import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
+@Slf4j
 public class UserServiceImpl implements IUserService{
-	
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+
 	
 	
 	@Autowired
@@ -68,12 +72,49 @@ public class UserServiceImpl implements IUserService{
 			
 			model =ResponseModel.builder().MessageTypeID(0).MessageType("Successful").Message("User Successfully Created").build();
 		}
+		val2.close();
 	
 		return Mono.just(model);
 	}
 
 	@Override
 	public Mono<ResponseModel> UpdateUser(UserModel user) {
+		//RETURN MESAGE;
+		ResponseModel model=null;
+		
+		//TODO: Validation: check if company and user exist
+		
+		//TODO: Check if password has been changed and if change log entry. 
+		//TODO - FUTURE CHANGE: if change by root parent log entry. 
+		//TODO - FUTURE CHANGE: if changed by current user follow update process
+		
+		//TODO - FUTURE: IF any fields are missing use previous setting
+		
+				
+		//if (valid){
+		userRepo.save(user);
+		model =ResponseModel.builder().MessageTypeID(0).MessageType("Successful").Message("User Successfully Created").build();
+		
+		//}else{
+		//}
+		
+		return Mono.just(model);
+	}
+
+	@Override
+	public Mono<ResponseModel> DeactiveteUser(UserModel user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mono<ResponseModel> ActivateUser(UserModel user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Flux<UserModel> ListUsers(UserModel user) {
 		// TODO Auto-generated method stub
 		return null;
 	}

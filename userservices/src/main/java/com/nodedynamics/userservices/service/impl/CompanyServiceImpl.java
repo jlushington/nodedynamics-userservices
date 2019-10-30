@@ -10,6 +10,7 @@ import com.nodedynamics.userservices.models.company.CompanyModel;
 import com.nodedynamics.userservices.repo.CompanyRepository;
 import com.nodedynamics.userservices.service.ICompanyService;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -36,6 +37,27 @@ public class CompanyServiceImpl implements ICompanyService{
 
 	@Override
 	public Mono<ResponseModel> UpdateCompany(CompanyModel company) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Mono<ResponseModel> DeactivateCompany(CompanyModel company) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Mono<ResponseModel> ActivateCompany(CompanyModel company) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Flux<CompanyModel> ListCompany(CompanyModel company) {
 		// TODO Auto-generated method stub
 		return null;
 	}

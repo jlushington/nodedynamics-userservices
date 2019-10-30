@@ -15,6 +15,8 @@ public interface Validate {
 	HashMap<EValidation.Repos, MongoRepository> getRepo();
 	void setRepo(HashMap<EValidation.Repos, MongoRepository>  r);
 	
+	void close();
+	
 	void validateExecute();
 
 }

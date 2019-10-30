@@ -49,8 +49,6 @@ public abstract class Validator implements Validate{
 	
 	@Override
 	public void setIsValid(Boolean valid) {
-		
-		log.info("setIsValid->isValid: " + isValid);
 		if(!(valid)) {
 			isValid=false;
 		}
@@ -62,12 +60,19 @@ public abstract class Validator implements Validate{
 		return repos;
 	}
 	@Override
-	public void setRepo(HashMap<Repos, MongoRepository> r) {		
+	public void setRepo(HashMap<Repos, MongoRepository> r) {	
 		if(repos==null) {
 			repos=r;
 		}
 		
 	}	
+	
+	@Override
+	public void close() {
+		model=null;
+		isValid=true;
+		repos=null;
+	}
 	
 
 }

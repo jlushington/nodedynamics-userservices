@@ -76,10 +76,11 @@
 	    	<version>0.9.1</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
 		<dependency>
 	    	<groupId>com.auth0</groupId>
-	    	<artifactId>auth0</artifactId>
-	    	<version>1.14.3</version>
+	    	<artifactId>java-jwt</artifactId>
+	    	<version>3.8.3</version>
 		</dependency>
 		
 		<dependency>
@@ -87,6 +88,7 @@
     	<artifactId>auth0-spring-security-api</artifactId>
     	<version>1.2.6</version>
 	</dependency>
+
 
 
 	</dependencies>
